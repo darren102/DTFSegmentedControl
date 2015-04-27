@@ -1,0 +1,10 @@
+framework module DTFSegmentedControl {
+  umbrella header "DTFSegmentedControl.h"
+
+  export *
+  module * { export * }
+}
+
+module DTFSegmentedControl.Swift {
+    header "DTFSegmentedControl-Swift.h"
+}
