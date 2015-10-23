@@ -13,15 +13,16 @@ class DTFSegmentedControlCollectionViewCell: UICollectionViewCell {
     // MARK: - Variables
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFontOfSize(17.0)
         label.textAlignment = .Center
         label.backgroundColor = .clearColor()
         return label
     }()
+
     private lazy var selectorView: UIView = {
         let view = UIView()
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .blueColor()
         return view
     }()
@@ -29,6 +30,7 @@ class DTFSegmentedControlCollectionViewCell: UICollectionViewCell {
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         contentView.addSubview(label)
         contentView.addSubview(selectorView)
 
@@ -38,38 +40,49 @@ class DTFSegmentedControlCollectionViewCell: UICollectionViewCell {
         // Setting the horizontal constraints for the label and selector view
         NSLayoutConstraint.activateConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat("|-(spacing)-[label]-(spacing)-|",
-                options: NSLayoutFormatOptions(0),
+                options: NSLayoutFormatOptions(rawValue: 0),
                 metrics: metrics,
                 views: views))
+
         NSLayoutConstraint.activateConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat("|-(spacing)-[selectorView]-(spacing)-|",
-                options: NSLayoutFormatOptions(0),
+                options: NSLayoutFormatOptions(rawValue: 0),
                 metrics: metrics,
                 views: views))
-        
+
         NSLayoutConstraint.activateConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat("V:|-(spacing)-[label(labelHeight)]-(spacing)-[selectorView(selectorHeight)]-(spacing)-|",
-                options: NSLayoutFormatOptions(0),
+                options: NSLayoutFormatOptions(rawValue: 0),
                 metrics: metrics,
                 views: views))
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - View Life Cycle
+    override func intrinsicContentSize() -> CGSize {
+        return CGSize(width: UIViewNoIntrinsicMetric, height: 44.0)
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         label.text = nil
+        label.sizeToFit()
         selectorView.hidden = true
+        selectorView.sizeToFit()
     }
-    
-    // MARK: - Internal
+}
+
+// MARK: - Internal
+extension DTFSegmentedControlCollectionViewCell {
+
     func configureCell(labelText: String?, isSelected: Bool) {
         if let labelText = labelText {
             label.text = labelText
             label.sizeToFit()
+            selectorView.sizeToFit()
         }
         selectorView.hidden = !isSelected
     }

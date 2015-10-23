@@ -19,7 +19,7 @@
 		95C8180C1AEDB5A400644072 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95C8180B1AEDB5A400644072 /* Images.xcassets */; };
 		95C8180F1AEDB5A400644072 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C8180D1AEDB5A400644072 /* LaunchScreen.xib */; };
 		95C8181B1AEDB5A400644072 /* DTFSegmentedControlDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8181A1AEDB5A400644072 /* DTFSegmentedControlDemoTests.swift */; };
-		95C8182D1AEDBAB300644072 /* DTFSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C8182C1AEDBAB300644072 /* DTFSegmentedControl.framework */; };
+		95F63DAB1AEEEFE2003B56FB /* DTFSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95F63DAA1AEEEFE2003B56FB /* DTFSegmentedControl.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,7 @@
 		95C818141AEDB5A400644072 /* DTFSegmentedControlDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DTFSegmentedControlDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C818191AEDB5A400644072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95C8181A1AEDB5A400644072 /* DTFSegmentedControlDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTFSegmentedControlDemoTests.swift; sourceTree = "<group>"; };
-		95C8182C1AEDBAB300644072 /* DTFSegmentedControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DTFSegmentedControl.framework; sourceTree = "<group>"; };
+		95F63DAA1AEEEFE2003B56FB /* DTFSegmentedControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DTFSegmentedControl.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95C8182D1AEDBAB300644072 /* DTFSegmentedControl.framework in Frameworks */,
+				95F63DAB1AEEEFE2003B56FB /* DTFSegmentedControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,7 +159,7 @@
 		95C818011AEDB5A400644072 /* DTFSegmentedControlDemo */ = {
 			isa = PBXGroup;
 			children = (
-				95C8182C1AEDBAB300644072 /* DTFSegmentedControl.framework */,
+				95F63DAA1AEEEFE2003B56FB /* DTFSegmentedControl.framework */,
 				95C818041AEDB5A400644072 /* AppDelegate.swift */,
 				95C818061AEDB5A400644072 /* ViewController.swift */,
 				95C818081AEDB5A400644072 /* Main.storyboard */,
@@ -286,7 +286,9 @@
 		95C817CF1AED5CDF00644072 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Darren Ferguson";
 				TargetAttributes = {
 					95C817D71AED5CDF00644072 = {
@@ -452,6 +454,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -531,6 +534,7 @@
 				INFOPLIST_FILE = DTFSegmentedControl/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.darren102.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -550,6 +554,7 @@
 				INFOPLIST_FILE = DTFSegmentedControl/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.darren102.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -569,6 +574,7 @@
 				);
 				INFOPLIST_FILE = DTFSegmentedControlTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.darren102.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -582,6 +588,7 @@
 				);
 				INFOPLIST_FILE = DTFSegmentedControlTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.darren102.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -600,6 +607,7 @@
 				);
 				INFOPLIST_FILE = DTFSegmentedControlDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.darren102.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -614,6 +622,7 @@
 				);
 				INFOPLIST_FILE = DTFSegmentedControlDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.darren102.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -632,6 +641,7 @@
 				);
 				INFOPLIST_FILE = DTFSegmentedControlDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.darren102.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DTFSegmentedControlDemo.app/DTFSegmentedControlDemo";
 			};
@@ -647,6 +657,7 @@
 				);
 				INFOPLIST_FILE = DTFSegmentedControlDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.darren102.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DTFSegmentedControlDemo.app/DTFSegmentedControlDemo";
 			};
@@ -671,6 +682,7 @@
 				95C817F01AED5CDF00644072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95C817F11AED5CDF00644072 /* Build configuration list for PBXNativeTarget "DTFSegmentedControlTests" */ = {
 			isa = XCConfigurationList;
@@ -679,6 +691,7 @@
 				95C817F31AED5CDF00644072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95C8181C1AEDB5A400644072 /* Build configuration list for PBXNativeTarget "DTFSegmentedControlDemo" */ = {
 			isa = XCConfigurationList;
@@ -687,6 +700,7 @@
 				95C8181E1AEDB5A400644072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95C8181F1AEDB5A400644072 /* Build configuration list for PBXNativeTarget "DTFSegmentedControlDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -695,6 +709,7 @@
 				95C818211AEDB5A400644072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

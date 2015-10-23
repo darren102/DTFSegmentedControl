@@ -16,16 +16,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let control = DTFSegmentedControlView(frame: CGRect.zeroRect, collectionViewLayout: UICollectionViewFlowLayout())
-        control.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+        let control = DTFSegmentedControlView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        control.translatesAutoresizingMaskIntoConstraints = false
         control.backgroundColor = .whiteColor()
+        control.cellWidth = 50.0
         view.addSubview(control)
         
         NSLayoutConstraint.activateConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("|[control]|", options: NSLayoutFormatOptions(0), metrics: nil, views: ["control":control]))
+            NSLayoutConstraint.constraintsWithVisualFormat("|[control]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["control":control]))
         NSLayoutConstraint.activateConstraints(
-            NSLayoutConstraint.constraintsWithVisualFormat("V:|-(22)-[control(44)]", options: NSLayoutFormatOptions(0), metrics: nil, views: ["control":control]))
-        control.configureControl(titles, data: data)
+            NSLayoutConstraint.constraintsWithVisualFormat("V:|-(22)-[control(44)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["control":control]))
+        control.configureSegmentedControl(titles, data: data)
     }
 }
 

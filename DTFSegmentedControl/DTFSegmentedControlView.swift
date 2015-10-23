@@ -10,18 +10,23 @@ import UIKit
 
 public class DTFSegmentedControlView: UICollectionView {
    
-    // MARK: - Constants
-    private let kDTFSegmentedCellIdentifier = "DTFSegmentedCell"
+    // MARK: - CellIdentifiers
+    private enum CellIdentifers: String {
+        case DTFSegmentedCell
+    }
     
     // MARK: - Variables
-    public var cellWidth = 100.0
+    public var cellWidth = 60.0 {
+        didSet { updateCollectionViewCellEstimatedSize() }
+    }
     public var selectedFunc: ((String, NSIndexPath) -> Void) = { _ in () }
     private var segmentTitles = [String]()
     private var segmentData = [String]()
-    private var selectedSegment: String = ""
+    private var selectedSegment = ""
+    private var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     
     // MARK: - Initializers
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupControl()
     }
@@ -36,8 +41,11 @@ public class DTFSegmentedControlView: UICollectionView {
     }
     
     // MARK: - Public
-    public func configureControl(titles: [String], data: [String]) {
-        assert(titles.count == data.count, "Number of Titles does not match the number of data provided")
+    public func configureSegmentedControl(titles: [String], data: [String]) {
+        guard titles.count > 0 && titles.count == data.count else {
+            fatalError("Number of \"titles\" does not match the number of \"data\" provided")
+        }
+
         segmentTitles = titles
         segmentData = data
         selectedSegment = titles.first!
@@ -46,17 +54,22 @@ public class DTFSegmentedControlView: UICollectionView {
     
     // MARK: - Private
     private func setupControl() {
-        registerClass(DTFSegmentedControlCollectionViewCell.self, forCellWithReuseIdentifier: kDTFSegmentedCellIdentifier)
+        registerClass(DTFSegmentedControlCollectionViewCell.self, forCellWithReuseIdentifier: CellIdentifers.DTFSegmentedCell.rawValue)
 
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
 
+        updateCollectionViewCellEstimatedSize()
+
+        dataSource = self
+        delegate = self
+    }
+
+    private func updateCollectionViewCellEstimatedSize() {
+        assert(cellWidth > 0.0, "Cell width must be greater than 0.0")
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.estimatedItemSize = CGSize(width: cellWidth, height: 44.0)
         flowLayout.scrollDirection = .Horizontal
-        
-        dataSource = self
-        delegate = self
     }
 }
 
@@ -70,7 +83,7 @@ extension DTFSegmentedControlView: UICollectionViewDataSource {
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let segmentTitle = segmentTitles[indexPath.row]
         let selected = selectedSegment == segmentTitle
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kDTFSegmentedCellIdentifier, forIndexPath: indexPath) as! DTFSegmentedControlCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifers.DTFSegmentedCell.rawValue, forIndexPath: indexPath) as! DTFSegmentedControlCollectionViewCell
         cell.configureCell(segmentTitle, isSelected: selected)
         return cell
     }
@@ -81,8 +94,9 @@ extension DTFSegmentedControlView: UICollectionViewDelegate {
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         selectedSegment = segmentTitles[indexPath.row]
         selectedFunc(selectedSegment, indexPath)
-
+        selectedIndexPath = indexPath
         reloadData()
-        scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
+        
+        scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
     }
 }
