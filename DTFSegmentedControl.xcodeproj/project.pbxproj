@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95697D7B1BDBB5DF0012FF3C /* DTFSegmentedControlConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95697D7A1BDBB5DF0012FF3C /* DTFSegmentedControlConfig.swift */; };
 		95C817DE1AED5CDF00644072 /* DTFSegmentedControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 95C817DD1AED5CDF00644072 /* DTFSegmentedControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		95C817E41AED5CDF00644072 /* DTFSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C817D81AED5CDF00644072 /* DTFSegmentedControl.framework */; };
 		95C817EB1AED5CDF00644072 /* DTFSegmentedControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C817EA1AED5CDF00644072 /* DTFSegmentedControlTests.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		95697D7A1BDBB5DF0012FF3C /* DTFSegmentedControlConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTFSegmentedControlConfig.swift; sourceTree = "<group>"; };
 		95C817D81AED5CDF00644072 /* DTFSegmentedControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTFSegmentedControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95C817DC1AED5CDF00644072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95C817DD1AED5CDF00644072 /* DTFSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTFSegmentedControl.h; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				95C817DD1AED5CDF00644072 /* DTFSegmentedControl.h */,
 				95C817F61AED602800644072 /* DTFSegmentedControlCollectionViewCell.swift */,
+				95697D7A1BDBB5DF0012FF3C /* DTFSegmentedControlConfig.swift */,
 				95C817FA1AED7FF500644072 /* DTFSegmentedControlView.swift */,
 				95C817DB1AED5CDF00644072 /* Supporting Files */,
 			);
@@ -369,6 +372,7 @@
 			files = (
 				95C817FB1AED7FF500644072 /* DTFSegmentedControlView.swift in Sources */,
 				95C817F71AED602800644072 /* DTFSegmentedControlCollectionViewCell.swift in Sources */,
+				95697D7B1BDBB5DF0012FF3C /* DTFSegmentedControlConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

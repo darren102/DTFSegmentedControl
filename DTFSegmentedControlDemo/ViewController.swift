@@ -20,14 +20,17 @@ class ViewController: UIViewController {
         let control = DTFSegmentedControlView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
         control.translatesAutoresizingMaskIntoConstraints = false
         control.backgroundColor = .whiteColor()
-        control.cellWidth = 50.0
         view.addSubview(control)
         
         NSLayoutConstraint.activateConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat("|[control]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["control":control]))
         NSLayoutConstraint.activateConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat("V:|-(22)-[control(44)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["control":control]))
-        control.configureSegmentedControl(titles, data: data)
+        control.configureSegmentedControl(generateSegmentedControlData())
+    }
+    
+    private func generateSegmentedControlData() -> DTFSegmentedControlConfig {
+        return DTFSegmentedControlConfig(segmentTitles: titles, segmentData: data)
     }
 }
 

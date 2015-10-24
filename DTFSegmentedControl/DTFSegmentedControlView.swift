@@ -16,11 +16,10 @@ public class DTFSegmentedControlView: UICollectionView {
     }
     
     // MARK: - Variables
-    public var cellWidth = 60.0 {
+    public var selectedFunc: ((String, NSIndexPath) -> Void) = { _ in () }
+    private var segmentTitles = [String]() {
         didSet { updateCollectionViewCellEstimatedSize() }
     }
-    public var selectedFunc: ((String, NSIndexPath) -> Void) = { _ in () }
-    private var segmentTitles = [String]()
     private var segmentData = [String]()
     private var selectedSegment = ""
     private var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -41,14 +40,17 @@ public class DTFSegmentedControlView: UICollectionView {
     }
     
     // MARK: - Public
-    public func configureSegmentedControl(titles: [String], data: [String]) {
-        guard titles.count > 0 && titles.count == data.count else {
-            fatalError("Number of \"titles\" does not match the number of \"data\" provided")
+    public func configureSegmentedControl(config: DTFSegmentedControlConfig) {
+        guard config.segmentTitles.count > 0 && config.segmentTitles.count == config.segmentData.count else {
+            fatalError("Number of \"Segment Titles\" does not match the number of \"Segment Data\" provided")
         }
 
-        segmentTitles = titles
-        segmentData = data
-        selectedSegment = titles.first!
+        segmentTitles = config.segmentTitles
+        segmentData = config.segmentData
+        selectedSegment = segmentTitles.first!
+
+        updateCollectionViewCellEstimatedSize()
+
         reloadData()
     }
     
@@ -59,14 +61,21 @@ public class DTFSegmentedControlView: UICollectionView {
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
 
-        updateCollectionViewCellEstimatedSize()
-
         dataSource = self
         delegate = self
     }
 
     private func updateCollectionViewCellEstimatedSize() {
-        assert(cellWidth > 0.0, "Cell width must be greater than 0.0")
+        assert(segmentTitles.count > 0, "Segment titles must have a count greater than 0")
+        
+        var totalLength = CGFloat(0.0)
+        let currentFont = UIFont.systemFontOfSize(17.0)
+        for title in segmentTitles {
+            let size = (title as NSString).sizeWithAttributes([NSFontAttributeName : currentFont])
+            totalLength = totalLength + size.width + 16.0
+        }
+
+        let cellWidth = totalLength / CGFloat(segmentTitles.count)
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.estimatedItemSize = CGSize(width: cellWidth, height: 44.0)
         flowLayout.scrollDirection = .Horizontal
